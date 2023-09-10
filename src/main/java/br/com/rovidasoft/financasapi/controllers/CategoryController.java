@@ -5,6 +5,7 @@ import br.com.rovidasoft.financasapi.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,11 @@ public class CategoryController {
     @GetMapping(value = "/all")
     public ResponseEntity<List<Category>> findAll() {
         return ResponseEntity.ok().body(categoryService.findAll());
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Category> add(Category category){
+        return ResponseEntity.ok().body(categoryService.add(category));
     }
 
 }
