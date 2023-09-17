@@ -3,9 +3,9 @@ package br.com.rovidasoft.financasapi.services;
 import br.com.rovidasoft.financasapi.entities.FinancialRelease;
 import br.com.rovidasoft.financasapi.repositories.FinancialReleaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,4 +27,15 @@ public class FinancialReleaseService {
         Optional<FinancialRelease> financialRelease = financialReleaseRepository.findById(id);
         return financialRelease.get();
     }
+
+    public FinancialRelease add(FinancialRelease financialRelease){
+      return financialReleaseRepository.save(financialRelease);
+    }
+
+    public void delete(Long id){
+        financialReleaseRepository.deleteById(id);
+    }
+
+
+
 }
